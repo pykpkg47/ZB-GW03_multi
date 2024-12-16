@@ -1,0 +1,13 @@
+mdns:
+  services:
+    - service: __zigbee-coordinator
+      protocol: _tcp
+      port: 6638
+      txt:
+        name: ZB-GW03
+        version: 1.0
+        radio_type: ezsp
+        serial_number: 123859
+        baud_rate: 115200
+        data_flow_control: software
+
