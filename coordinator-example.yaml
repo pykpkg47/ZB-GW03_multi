@@ -7,4 +7,5 @@ packages:
   ethernet: !include  packages/ethernet.yaml
   status_led: !include  packages/status_led.yaml
   mdns: !include  packages/mdns.yaml
+  dashboard: !include dashboard.yaml
 
