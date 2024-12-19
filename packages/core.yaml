@@ -25,7 +25,7 @@ esphome:
     priority: 600
     then:
       - switch.turn_off: download_mode
-      - switch.turn_on: zigbee_reset
+      - button.press: zigbee_reset
 
 esp32:
   board: esp32dev
@@ -37,6 +37,12 @@ esp32:
 external_components:
   - source: github://oxan/esphome-stream-server@master
 
+
+binary_sensor:
+  - platform: stream_server
+    connected:
+      name: Connected
+      
 ota:
   platform: esphome
 
@@ -55,18 +61,20 @@ stream_server:
   uart_id: uart_zigbee
   port: 6638
 
-switch:
+
+button:
   - platform: restart
     name: "${name} Restart"
-
+    
   - platform: template
     id: zigbee_reset
     name: "${name} Zigbee Reset"
-    turn_on_action:
+    on_press:
       - switch.turn_on: zigbee_rst
       - delay: 10ms
       - switch.turn_off: zigbee_rst
-
+      
+switch:
   # SM-011 V1.0 nRST
   - platform: gpio
     id: zigbee_rst

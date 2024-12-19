@@ -6,4 +6,5 @@ binary_sensor:
       inverted: true
     on_press:
       - switch.turn_off: download_mode
-      - switch.turn_on: zigbee_reset
+      - button.press: zigbee_reset
+
